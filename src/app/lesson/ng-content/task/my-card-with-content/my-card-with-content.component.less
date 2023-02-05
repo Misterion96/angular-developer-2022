@@ -1,0 +1,42 @@
+:host {
+  display: grid;
+  column-gap: 8px;
+  grid-template-columns: 1fr 2fr;
+  width: 600px;
+  min-height: 200px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+
+.borders {
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.right-side {
+  display: grid;
+  row-gap: 8px;
+  grid-template-rows: 1fr 4fr;
+}
+
+.card {
+  &__photo {
+    height: calc(100% - 2px);
+  }
+
+  &__header {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &__description {
+    white-space: break-spaces;
+    overflow: hidden;
+    padding: 4px 8px;
+  }
+}
