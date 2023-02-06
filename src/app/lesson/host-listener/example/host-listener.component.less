@@ -1,0 +1,25 @@
+.todo {
+  &__item {
+    min-width: 100px;
+    max-width: 600px;
+    padding: 4px 8px;
+    margin: 4px 0px;
+    border: 1px solid grey;
+    transition: color .3s, background .3s;
+
+    &:hover,
+    &:focus {
+      font-weight: bold;
+      outline: 1px solid cornflowerblue;
+      color: #333;
+    }
+
+    &--selected {
+      background: burlywood;
+    }
+  }
+}
+
+.selected {
+  background: red;
+}

@@ -1,0 +1,13 @@
+<label for="input" style="margin-bottom: 100px; display:block;">
+  put temp value
+  <input type="text" id="input" [(ngModel)]="inputValue" (ngModelChange)="setTempValue()" >
+</label>
+<div class="todo" appKeyboardNavigate>
+  <div class="todo__item" *ngFor="let todo of todos"
+       appItemSelected="todo__item--selected"
+  >
+    {{todo}}
+  </div>
+</div>
+
+
