@@ -7,6 +7,7 @@ import { NgContentComponent } from './lesson/ng-content/example/ng-content.compo
 import { MyCardWithContentComponent } from './lesson/ng-content/task/my-card-with-content/my-card-with-content.component';
 import { NgContentTaskComponent } from './lesson/ng-content/task/ng-content-task/ng-content-task.component';
 import 'zone.js';
+import { NgContainerComponent } from './lesson/ng-container/ng-container.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import 'zone.js';
     NgContentComponent,
     MyCardWithContentComponent,
     NgContentTaskComponent,
+    NgContainerComponent,
   ],
   imports: [CommonModule, BrowserModule],
   providers: [],
