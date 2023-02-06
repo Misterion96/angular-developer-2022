@@ -1,0 +1,7 @@
+<table>
+    <tr *ngFor="let row of rows">
+        <td *ngFor="let col of row">
+            <span [appColorizeValue]="col">{{col}}</span>
+        </td>
+    </tr>
+</table>
