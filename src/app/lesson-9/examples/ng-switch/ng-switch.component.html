@@ -1,0 +1,6 @@
+<p [ngSwitch]="userRole">
+  <span *ngSwitchCase="userRoles.USER">text for only user roles</span>
+  <span *ngSwitchCase="userRoles.ADMIN">text for only admin roles</span>
+  <span *ngSwitchCase="userRoles.MODERATOR">text for only moderator roles</span>
+  <span *ngSwitchDefault> unknown </span>
+</p>

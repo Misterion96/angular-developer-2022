@@ -1,0 +1,5 @@
+<div *ngIf="loadingState$ | async as value; else loadingRef">
+  {{ value }}
+</div>
+
+<ng-template #loadingRef> ....loading... </ng-template>
