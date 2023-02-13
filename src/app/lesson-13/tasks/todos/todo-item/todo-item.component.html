@@ -1,0 +1,46 @@
+<div class="flex">
+    <tui-checkbox-labeled size="l"
+                          [(ngModel)]="todo.completed"
+                          (ngModelChange)="onCompleteChange()"
+    ></tui-checkbox-labeled>
+
+    <tui-input-inline
+            *ngIf="editing; else text"
+            tuiAutoFocus
+            [(ngModel)]="todo.title"
+            (focusedChange)="onFocusedChange($event)"
+            (keydown.esc.prevent)="toggle()"
+            (keydown.enter.prevent)="toggle()"
+    >
+        Type a heading
+    </tui-input-inline>
+    <ng-template #text>
+        <tui-line-clamp [content]="todo.title" linesLimit="1" lineHeight="34"></tui-line-clamp>
+        <button
+                tuiIconButton
+                type="button"
+                title="Edit heading"
+                size="xs"
+                appearance="icon"
+                icon="tuiIconEditLarge"
+                class="tui-space_left-1"
+                (click)="toggle()"
+        ></button>
+    </ng-template>
+</div>
+
+
+<div class="flex todo_actions">
+    <button tuiIconButton
+            icon="tuiIconRefresh"
+            size="s"
+            [disabled]="!changed"
+            (click)="updateTodo.emit(todo)"
+    ></button>
+    <button tuiIconButton
+            icon="tuiIconTrash"
+            size="s"
+            appearance="outline"
+            (click)="deleteTodo.emit(todo)"
+    ></button>
+</div>

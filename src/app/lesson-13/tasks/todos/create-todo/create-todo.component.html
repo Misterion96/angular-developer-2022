@@ -1,0 +1,11 @@
+<form tuiGroup collapsed="false" size="m" [formGroup]="form" (ngSubmit)="onSubmit()" id="form">
+    <tui-input formControlName="title" tuiTextfieldSize="m">
+        <input
+                tuiTextfield
+                type="text"
+        />
+    </tui-input>
+    <button tuiButton type="submit" icon="tuiIconAddRowLarge" size="m" form="form">
+        Create
+    </button>
+</form>
