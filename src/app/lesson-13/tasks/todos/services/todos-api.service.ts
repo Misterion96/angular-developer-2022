@@ -16,14 +16,17 @@ export class TodosApiService {
     }
 
     create$(todo: TodoPayload): Observable<TodoInterface> {
+        // this.http.post -> TODO_URL(todo.id), body: {todo}
         throw new Error('create$ not implemented')
     }
 
     update$(todo: TodoPayload, id: number): Observable<TodoInterface> {
+        // this.http.put -> TODO_URL(todo.id), body: {todo}
         throw new Error('update$ not implemented')
     }
 
     delete$(id: number): Observable<void> {
+        // this.http.delete -> TODO_URL(todo.id)
         throw new Error('delete$ not implemented')
     }
 }
