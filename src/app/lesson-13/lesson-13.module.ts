@@ -7,7 +7,7 @@ import { TodosModule } from './tasks/todos/todos.module';
     imports: [
         TodosModule,
         CommonModule,
-        ExampleModule
+        ExampleModule,
     ],
     exports: [
         TodosModule,

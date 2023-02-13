@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { CodeErrorsService } from './services/code-errors.service';
-import { Lesson13User, UsersUriService } from './services/users-uri.service';
+import { CodeErrorsService } from '../services/code-errors.service';
+import { Lesson13User, UsersUriService } from '../services/users-uri.service';
 
 @Component({
     selector: 'lesson-13-examples',
@@ -20,6 +20,16 @@ import { Lesson13User, UsersUriService } from './services/users-uri.service';
     styles: [':host {display: block; margin: 0 auto; width: 600px;}']
 })
 export class ExampleComponent {
+    // get
+    // post
+    // put
+    // patch
+    // delete
+
+    //headers/
+    //query
+    // response type
+
 
     constructor(
         private readonly usersUri: UsersUriService,
