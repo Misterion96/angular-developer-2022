@@ -26,7 +26,15 @@ const LESSONS = [
     declarations: [
         AppComponent,
     ],
-    imports: [CommonModule, BrowserModule, ...LESSONS, BrowserAnimationsModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        TuiRootModule,
+        TuiDialogModule,
+        TuiAlertModule,
+        ...LESSONS,
+    ],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
     bootstrap: [AppComponent],
 })
