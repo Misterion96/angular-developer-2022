@@ -11,6 +11,8 @@ export class TodosApiService {
     ) {
     }
 
+    // https://jsonplaceholder.typicode.com/
+
     getAll$(): Observable<TodosInterface> {
         throw new Error('getAll$ not implemented')
     }
