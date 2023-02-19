@@ -22,7 +22,7 @@ import { UsersUriService } from '../services/users-uri.service';
     providers: [
         UsersUriService,
         CodeErrorsService,
-        ...EXAMPLE_INTERCEPTORS,
+        // ...EXAMPLE_INTERCEPTORS,
     ]
 })
 export class ExampleModule {

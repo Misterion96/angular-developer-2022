@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TodosService } from './services/todos.service';
-import { TodoInterface } from './todos.interface';
+import { TodoInterface, TodoPayload } from './todos.interface';
 
 @Component({
   selector: 'app-todos',
@@ -30,5 +30,9 @@ export class TodosComponent implements OnInit {
 
   public onDeleteTodo($event: number): void {
     this.todoService.delete($event)
+  }
+
+  public onCreate($event: TodoPayload): void {
+    this.todoService.create($event)
   }
 }

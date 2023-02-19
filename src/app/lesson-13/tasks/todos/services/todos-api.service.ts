@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TodoInterface, TodoPayload, TodosInterface } from '../todos.interface';
@@ -8,27 +9,25 @@ export class TodosApiService {
 
     constructor(
         private readonly uriService: TodosUriService,
+        private readonly httpClient: HttpClient,
     ) {
     }
 
     // https://jsonplaceholder.typicode.com/
 
     getAll$(): Observable<TodosInterface> {
-        throw new Error('getAll$ not implemented')
+        return this.httpClient.get<TodosInterface>(this.uriService.TODOS_URL)
     }
 
     create$(todo: TodoPayload): Observable<TodoInterface> {
-        // this.http.post -> TODO_URL(todo.id), body: {todo}
-        throw new Error('create$ not implemented')
+       return this.httpClient.post<TodoInterface>(this.uriService.TODOS_URL, todo)
     }
 
     update$(todo: TodoPayload, id: number): Observable<TodoInterface> {
-        // this.http.put -> TODO_URL(todo.id), body: {todo}
-        throw new Error('update$ not implemented')
+        return this.httpClient.put<TodoInterface>(this.uriService.TODO_URL(id), todo)
     }
 
     delete$(id: number): Observable<void> {
-        // this.http.delete -> TODO_URL(todo.id)
-        throw new Error('delete$ not implemented')
+        return this.httpClient.delete<void>(this.uriService.TODO_URL(id))
     }
 }

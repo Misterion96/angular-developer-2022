@@ -1,4 +1,4 @@
-<app-create-todo></app-create-todo>
+<app-create-todo (createTodo)="onCreate($event)"></app-create-todo>
 
 <ng-container *tuiLet="todos$ | async as todos">
     <tui-loader *ngIf="todos?.length; else noTodosRef"

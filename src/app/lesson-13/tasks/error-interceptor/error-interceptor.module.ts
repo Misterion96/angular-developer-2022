@@ -8,7 +8,7 @@ const APP_INIT: Provider = {
     provide: APP_INITIALIZER,
     multi: true,
     deps: [CodeErrorsService],
-    useFactory: (errorsService: CodeErrorsService) => () => errorsService.request$(404),
+    useFactory: (errorsService: CodeErrorsService) => () => errorsService.request$(401),
 }
 
 @NgModule({
@@ -16,6 +16,11 @@ const APP_INIT: Provider = {
         ShowErrorService,
         CodeErrorsService,
         APP_INIT,
+        {
+            provide: HTTP_INTERCEPTORS,
+            multi: true,
+            useClass: Error404Interceptor
+        }
     ]
 })
 export class ErrorInterceptorModule {

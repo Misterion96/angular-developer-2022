@@ -5,11 +5,11 @@ import { ShowErrorService } from './show-error.service';
 
 @Injectable()
 // implement HttpInterceptor
-export class Error404Interceptor {
+export class Error404Interceptor implements HttpInterceptor {
     constructor(private readonly errorService: ShowErrorService) {
     }
 
-    // intercept method here
-
-    // return this.errorService.handleError(<put handle>)
+    public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return this.errorService.handleError(next.handle(req));
+    }
 }
