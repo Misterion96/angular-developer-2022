@@ -1,0 +1,71 @@
+<form [formGroup]="formGroup" class="tui-form form">
+    <div class="tui-form__row">
+        <tui-input formControlName="username">
+            Username
+            <input tuiTextfield type="text"/>
+        </tui-input>
+<!--        manual errors-->
+    </div>
+
+    <div class="tui-form__row">
+        <tui-input formControlName="email">
+            Email
+            <input tuiTextfield type="email"/>
+        </tui-input>
+        <tui-error
+                formControlName="email"
+                [error]="[] | tuiFieldError | async"
+        ></tui-error>
+    </div>
+
+    <div class="tui-form__row">
+        <tui-input formControlName="password">
+            Password
+            <input tuiTextfield type="text"/>
+        </tui-input>
+        <tui-error
+                formControlName="password"
+                [error]="[] | tuiFieldError | async"
+        ></tui-error>
+    </div>
+    <div class="tui-form__row">
+        <tui-input formControlName="passwordEqual">
+            Repeat password
+            <input tuiTextfield type="text"/>
+        </tui-input>
+        <tui-error
+                formControlName="passwordEqual"
+                [error]="[] | tuiFieldError | async"
+        ></tui-error>
+    </div>
+
+
+    <ng-container formArrayName="workBalance">
+        <div *ngFor="let control of workBalanceFormArrayControls; index as i"
+             class="tui-form__row"
+        >
+            <span class="tui-form__field-note">{{workBalancePlaceholders[i]}}</span>
+            <input
+                    type="range"
+                    tuiSlider
+                    min="0"
+                    max="100"
+                    size="m"
+                    [class]="['slider-' + i]"
+                    [formControlName]="i"
+            >
+        </div>
+    </ng-container>
+    <tui-error
+            formArrayName="workBalance"
+            [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <div class="tui-form__buttons">
+        <button class="tui-form__button" tuiButton appearance="secondary">
+            Submit
+        </button>
+    </div>
+</form>
+
+<app-parse-control-value [control]="formGroup"></app-parse-control-value>
+<app-parse-form-group-errors [fGroup]="formGroup"></app-parse-form-group-errors>
