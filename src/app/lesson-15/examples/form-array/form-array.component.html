@@ -1,0 +1,27 @@
+<!--<app-form-array-add (addPhone)="onAdd($event)"></app-form-array-add>-->
+
+<form class="tui-form">
+    <ng-container>
+        <div class="tui-form__row tui-row">
+            <tui-input-phone
+                    class="tui-col tui-space_right-1"
+            >
+                Type a phone number
+                <input
+                        tuiTextfield
+                        autocomplete="tel"
+                />
+            </tui-input-phone>
+
+            <button tuiIconButton
+                    icon="tuiIconTrashLarge"
+                    appearance="outline"
+                    class="tui-col"
+            ></button>
+        </div>
+
+    </ng-container>
+</form>
+
+
+<app-parse-control-value [control]="$any(formGroup)"></app-parse-control-value>
