@@ -1,0 +1,6 @@
+<p>Errors in group</p>
+<ng-container *ngIf="errors$ | async as errors">
+    <pre>
+        {{errors | json}}
+    </pre>
+</ng-container>
