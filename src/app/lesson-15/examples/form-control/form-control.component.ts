@@ -9,6 +9,7 @@ export class FormControlComponent implements OnInit {
   // init
   // get value - ngModelChange, valueChanges, value
   // updateOn - change, blur, submit
+  // typed
   constructor() { }
 
   ngOnInit(): void {
