@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import 'zone.js';
+import { Lesson15Module } from './lesson-15/lesson-15.module';
 
 import { Lesson7Module } from './lesson-7';
 import { Lesson9Module } from './lesson-9';
@@ -34,6 +35,7 @@ const LESSONS = [
         TuiDialogModule,
         TuiAlertModule,
         ...LESSONS,
+        Lesson15Module,
     ],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
     bootstrap: [AppComponent],
