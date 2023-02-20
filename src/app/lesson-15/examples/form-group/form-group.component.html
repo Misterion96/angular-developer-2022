@@ -1,0 +1,41 @@
+<form>
+    <tui-input class="tui-form__row">
+        Login
+        <input tuiTextfield type="text"/>
+    </tui-input>
+
+    <tui-input class="tui-form__row">
+        Password
+        <input tuiTextfield type="text"/>
+    </tui-input>
+
+
+
+
+    <div class="tui-form__buttons">
+        <button tuiButton class="tui-form__button">
+            Submit
+        </button>
+    </div>
+</form>
+
+
+<!--<tui-checkbox-block-->
+<!--        class="tui-form__row"-->
+<!--        formControlName="additionalInfoActive"-->
+<!--        contentAlign="left"-->
+<!--        size="m"-->
+<!--&gt;-->
+<!--    Additional Info-->
+<!--</tui-checkbox-block>-->
+
+<!--<ng-container *ngIf="isInfoActive$ | async">-->
+<!--    <tui-input-->
+<!--            class="tui-form__row" formControlName="info"-->
+<!--    >-->
+<!--        Info-->
+<!--        <input tuiTextfield type="text"/>-->
+<!--    </tui-input>-->
+<!--</ng-container>-->
+
+<app-parse-control-value [control]="formGroup"></app-parse-control-value>
