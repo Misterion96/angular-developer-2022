@@ -4,6 +4,9 @@
             Username
             <input tuiTextfield type="text"/>
         </tui-input>
+        <div *ngIf="formGroup.get('username').errors">
+            ERROR
+        </div>
 <!--        manual errors-->
     </div>
 
@@ -39,7 +42,7 @@
         ></tui-error>
     </div>
 
-
+    <p>Work balance</p>
     <ng-container formArrayName="workBalance">
         <div *ngFor="let control of workBalanceFormArrayControls; index as i"
              class="tui-form__row"

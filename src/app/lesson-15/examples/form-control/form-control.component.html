@@ -1,6 +1,10 @@
-<tui-input class="tui-space_vertical-4">
-    Text
-    <input tuiTextfield type="text"/>
-</tui-input>
+<form (submit)="onCheck()">
+    <tui-input class="tui-space_vertical-4" [formControl]="control">
+        Text
+        <input tuiTextfield type="text"/>
+    </tui-input>
+    <button tuiButton type="submit"> click </button>
+</form>
+
 
 

@@ -1,10 +1,11 @@
-<!--<app-form-array-add (addPhone)="onAdd($event)"></app-form-array-add>-->
+<app-form-array-add (addPhone)="onAdd($event)"></app-form-array-add>
 
-<form class="tui-form">
-    <ng-container>
-        <div class="tui-form__row tui-row">
+<form class="tui-form" [formGroup]="formGroup">
+    <ng-container formArrayName="phones">
+        <div class="tui-form__row tui-row" *ngFor="let control of formArray.controls; index as i">
             <tui-input-phone
                     class="tui-col tui-space_right-1"
+                    [formControl]="formArray.controls[i]"
             >
                 Type a phone number
                 <input
@@ -17,6 +18,7 @@
                     icon="tuiIconTrashLarge"
                     appearance="outline"
                     class="tui-col"
+                    (click)="onRemove(i)"
             ></button>
         </div>
 

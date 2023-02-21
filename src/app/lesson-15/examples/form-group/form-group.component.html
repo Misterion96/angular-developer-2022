@@ -1,16 +1,32 @@
-<form>
-    <tui-input class="tui-form__row">
+
+<form [formGroup]="formGroup">
+    <tui-input class="tui-form__row" formControlName="login">
         Login
         <input tuiTextfield type="text"/>
     </tui-input>
 
-    <tui-input class="tui-form__row">
+    <tui-input class="tui-form__row"  formControlName="password">
         Password
         <input tuiTextfield type="text"/>
     </tui-input>
 
+    <tui-checkbox-block
+            class="tui-form__row"
+            formControlName="additionalInfoActive"
+            contentAlign="left"
+            size="m"
+    >
+        Additional Info
+    </tui-checkbox-block>
 
-
+    <ng-container *ngIf="checkbox$ | async">
+        <tui-input
+                class="tui-form__row" formControlName="info"
+        >
+            Info
+            <input tuiTextfield type="text"/>
+        </tui-input>
+    </ng-container>
 
     <div class="tui-form__buttons">
         <button tuiButton class="tui-form__button">
@@ -20,22 +36,5 @@
 </form>
 
 
-<!--<tui-checkbox-block-->
-<!--        class="tui-form__row"-->
-<!--        formControlName="additionalInfoActive"-->
-<!--        contentAlign="left"-->
-<!--        size="m"-->
-<!--&gt;-->
-<!--    Additional Info-->
-<!--</tui-checkbox-block>-->
 
-<!--<ng-container *ngIf="isInfoActive$ | async">-->
-<!--    <tui-input-->
-<!--            class="tui-form__row" formControlName="info"-->
-<!--    >-->
-<!--        Info-->
-<!--        <input tuiTextfield type="text"/>-->
-<!--    </tui-input>-->
-<!--</ng-container>-->
-
-<app-parse-control-value [control]="formGroup"></app-parse-control-value>
+<app-parse-control-value [control]="$any(formGroup)"></app-parse-control-value>

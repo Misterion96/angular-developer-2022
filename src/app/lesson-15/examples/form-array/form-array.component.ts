@@ -8,6 +8,12 @@ import { map } from 'rxjs';
     styleUrls: ['./form-array.component.less']
 })
 export class FormArrayComponent implements OnInit {
+    public readonly formArray = new FormArray([
+        new FormControl('79122223344'),
+        new FormControl('79122223366'),
+        new FormControl('79122223377'),
+        new FormControl('79122223323'),
+    ])
     // init
     // getValue
     // updateOn
@@ -15,25 +21,30 @@ export class FormArrayComponent implements OnInit {
     // push, removeAt
 
     public readonly formGroup = new FormGroup({
-        phones: new FormArray([])
+        phones: this.formArray
     })
 
     // public get phonesFormArray(): FormArray {}
 
-    // public get phonesControls(): FormControl[] {}
+    // public get phonesControls(): FormControl[] {
+    //     return this.formArray.controls
+    // }
 
 
     constructor() {
     }
 
     ngOnInit(): void {
+        console.log(this.formArray.controls.values())
     }
 
-    // public onAdd($event: string): void {
-    // }
+    public onAdd(phone: string): void {
+        this.formArray.push(new FormControl(phone))
+    }
 
-    // public onDelete(i: number): void {
-    // }
+    public onRemove(i: number): void {
+        this.formArray.removeAt(i, {emitEvent: true});
+    }
 }
 
 
