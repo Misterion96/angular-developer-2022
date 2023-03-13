@@ -31,7 +31,7 @@ export class TestingTodoItemComponent implements OnInit {
   public readonly todoDelete = new EventEmitter<void>()
 
   @Output()
-  public todoChange = this.value$
+  public readonly todoChange = this.value$
 
   ngOnInit(): void {
     const {title, completed} = this.todo;
