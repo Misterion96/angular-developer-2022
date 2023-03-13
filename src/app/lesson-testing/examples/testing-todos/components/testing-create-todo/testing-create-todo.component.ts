@@ -4,8 +4,8 @@ import { map } from 'rxjs';
 
 @Component({
     selector: 'app-testing-create-todo',
-    templateUrl: './create-todo.component.html',
-    styleUrls: ['./create-todo.component.less']
+    templateUrl: './testing-create-todo.component.html',
+    styleUrls: ['./testing-create-todo.component.less']
 })
 export class TestingCreateTodoComponent {
     public readonly group = new FormGroup({
