@@ -1,0 +1,25 @@
+<app-testing-create-todo (createTodo)="onCreate($event)"></app-testing-create-todo>
+
+<ng-container *tuiLet="todos$ | async as todos">
+    <tui-loader *ngIf="todos?.length; else noTodosRef"
+                [showLoader]="loading$ | async"
+                [overlay]="true"
+                size="xl"
+                class="tui-space_top-5"
+    >
+        <app-testing-todo-item *ngFor="let todo of todos; trackBy: trackByTodo"
+                       [todo]="todo"
+                       class="tui-space_bottom-2"
+                       (todoChange)="onUpdateTodo($event, todo.id)"
+                       (todoDelete)="onDeleteTodo(todo.id)"
+        ></app-testing-todo-item>
+    </tui-loader>
+</ng-container>
+
+
+
+<ng-template #noTodosRef>
+    <h3 class="tui-text_h3">
+        No todos
+    </h3>
+</ng-template>
