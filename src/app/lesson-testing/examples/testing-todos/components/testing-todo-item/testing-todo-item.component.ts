@@ -2,15 +2,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TodoPayload } from '../../todos.interface';
+import { TestingTodoPayload } from '../../testing-todos.interface';
 
-type TodoGroup<T extends TodoPayload = TodoPayload> = {
-  [key in keyof TodoPayload]: AbstractControl<TodoPayload[key]>
+type TodoGroup<T extends TestingTodoPayload = TestingTodoPayload> = {
+  [key in keyof TestingTodoPayload]: AbstractControl<TestingTodoPayload[key]>
 }
 @Component({
   selector: 'app-testing-todo-item',
-  templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.less']
+  templateUrl: './testing-todo-item.component.html',
+  styleUrls: ['./testing-todo-item.component.less']
 })
 export class TestingTodoItemComponent implements OnInit {
   public formGroupTodo = new FormGroup<TodoGroup>({
@@ -18,14 +18,14 @@ export class TestingTodoItemComponent implements OnInit {
     completed: new FormControl(false)
   });
 
-  private readonly value$: Observable<TodoPayload> = this.formGroupTodo.valueChanges.pipe(
+  private readonly value$: Observable<TestingTodoPayload> = this.formGroupTodo.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      map(v => v as TodoPayload)
+      map(v => v as TestingTodoPayload)
   );
 
   @Input()
-  public todo!: TodoPayload
+  public todo!: TestingTodoPayload
 
   @Output()
   public readonly todoDelete = new EventEmitter<void>()
