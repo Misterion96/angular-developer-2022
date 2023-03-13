@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { TodosApiService } from './todos-api.service';
+import { TodosUriService } from './todos-uri.service';
 
 const MOCK_API_URL = 'my-api-url';
 
@@ -15,20 +16,20 @@ describe('TodosApiService', () => {
 
     beforeEach(() => {
         service = new TodosApiService(
+            new TodosUriService(MOCK_API_URL),
             MOCK_HTTP_CLIENT,
-            MOCK_API_URL
         )
     })
 
     it('check api url', () => {
-        expect(service.apiUrl).toEqual(`${MOCK_API_URL}/todos`)
+        expect(service.apiUrl).toEqual(MOCK_API_URL)
     })
 
     // get all - spy methods
     it('get all - spy methods', async () => {
         spyOn(MOCK_HTTP_CLIENT, 'get').and.returnValue(of([]))
 
-        const result = await service.getAll().toPromise()
+        const result = await service.getAll$().toPromise()
         expect(result).toEqual([])
     });
 
