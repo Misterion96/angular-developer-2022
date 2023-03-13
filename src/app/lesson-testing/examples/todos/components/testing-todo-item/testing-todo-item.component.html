@@ -1,0 +1,27 @@
+<ng-container *ngIf="formGroupTodo" [formGroup]="formGroupTodo">
+    <tui-checkbox-labeled size="l"
+                          formControlName="completed"
+                          data-test="todo__completed"
+    ></tui-checkbox-labeled>
+    <tui-input formControlName="title"
+               tuiTextfieldSize="s"
+               data-test="todo__title"
+               class="todo-item__title"
+    >
+        <input
+                tuiTextfield
+                type="text"
+        />
+    </tui-input>
+
+    <div class="todo-item__actions tui-space_left-3">
+        <button type="button"
+                tuiIconButton
+                size="s"
+                appearance="outline"
+                icon="tuiIconTrash"
+                data-test="todo__delete-btn"
+                (click)="todoDelete.emit()"
+        ></button>
+    </div>
+</ng-container>
