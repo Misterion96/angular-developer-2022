@@ -40,4 +40,8 @@ export class TestingTodoItemComponent implements OnInit {
       title, completed
     }, {emitEvent: false})
   }
+
+  public onClickDelete(): void {
+    this.todoDelete.emit()
+  }
 }
