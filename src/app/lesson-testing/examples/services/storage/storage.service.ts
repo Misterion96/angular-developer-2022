@@ -33,5 +33,4 @@ export class StorageService implements Storage {
         this.storage.setItem(key, value)
     }
 
-
 }
