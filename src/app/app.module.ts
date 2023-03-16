@@ -15,12 +15,15 @@ import { Lesson7Module } from './lesson-7';
 import { Lesson9Module } from './lesson-9';
 import { Lesson11Module } from './lesson-11';
 import { Lesson13Module } from './lesson-13';
+import { LessonTestingModule } from './lesson-testing';
 
 const LESSONS = [
     Lesson7Module,
     Lesson9Module,
     Lesson11Module,
-    Lesson13Module
+    Lesson13Module,
+    Lesson15Module,
+    LessonTestingModule
 ]
 
 @NgModule({
@@ -35,7 +38,6 @@ const LESSONS = [
         TuiDialogModule,
         TuiAlertModule,
         ...LESSONS,
-        Lesson15Module,
     ],
     providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
     bootstrap: [AppComponent],

@@ -1,0 +1,16 @@
+<form [formGroup]="group" class="create-todo">
+    <tui-input formControlName="title"
+               tuiTextfieldSize="s"
+               class="create-todo__title"
+    >
+        <input
+                tuiTextfield
+                type="text"
+                class="__input"
+        />
+    </tui-input>
+
+    <button type="submit" tuiButton size="s"
+    >Create
+    </button>
+</form>
