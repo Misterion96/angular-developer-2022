@@ -3,7 +3,7 @@
                 size="xxl"
                 [overlay]="true"
     >
-        <main class="posts__main">
+        <main class="posts__main" *ngIf="posts.length; else noPostsRef">
             <app-post *ngFor="let post of posts; trackBy: trackPost"
                       [post]="post"
                       [image]="(post.id | tuiMapper: getImage$) | async"
@@ -13,3 +13,8 @@
     </tui-loader>
 
 </div>
+
+
+<ng-template #noPostsRef>
+    <p class="tui-text_h3">No have any posts</p>
+</ng-template>
