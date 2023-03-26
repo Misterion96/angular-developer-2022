@@ -1,0 +1,31 @@
+<ng-container *ngIf="post$ | async as post">
+    <div class="post__main">
+        <img class="post__image" [src]="image$ | async" [alt]="post.title">
+        <tui-island class="post__info">
+            <h3 class="tui-island__title">
+                {{post.title}}
+            </h3>
+            <p class="tui-island__paragraph">
+                {{post.body}}
+            </p>
+        </tui-island>
+    </div>
+
+</ng-container>
+
+<div *ngIf="comments$ | async as comments">
+    <h4 class="tui-text_h4">Comments</h4>
+    <div class="comments">
+        <tui-island *ngFor="let comment of comments; last as last"
+                    class="tui-space_bottom-2"
+                    [class.post__comments--last]="last"
+        >
+            <h3 class="tui-island__title">
+                {{comment.name}}
+            </h3>
+            <p class="tui-island__paragraph">
+                {{comment.body}}
+            </p>
+        </tui-island>
+    </div>
+</div>

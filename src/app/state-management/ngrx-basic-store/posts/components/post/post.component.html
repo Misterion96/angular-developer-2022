@@ -1,0 +1,34 @@
+<tui-island>
+    <p class="tui-island__category">Posts from user {{post.userId}}</p>
+    <h3 class="tui-island__title">
+        <tui-line-clamp [content]="post.title"
+                        [linesLimit]="1"
+        ></tui-line-clamp>
+    </h3>
+    <div class="tui-island__content">
+        <img [src]="image" [alt]="post.title">
+    </div>
+    <p class="tui-island__paragraph">
+        <tui-line-clamp [content]="post.body"
+                        [linesLimit]="2"
+        ></tui-line-clamp>
+    </p>
+
+    <p class="tui-island__paragraph tui-island__paragraph_link">
+        <a
+                [routerLink]="[post.id]"
+                [relativeTo]="activatedRoute"
+                tuiLink
+        >
+            Details...
+        </a>
+    </p>
+
+    <button class="tui-island__footer-button"
+            tuiButton
+            size="s"
+            (click)="onDelete(post.id)"
+    >
+        Delete
+    </button>
+</tui-island>
