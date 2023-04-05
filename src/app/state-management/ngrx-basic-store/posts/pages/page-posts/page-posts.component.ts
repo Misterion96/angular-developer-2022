@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { take, tap } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { LoadingService } from '../../../../../services/loading.service';
 import { PostInterface } from '../../interfaces/posts.interfaces';
 import { PostsService } from '../../services/posts.service';

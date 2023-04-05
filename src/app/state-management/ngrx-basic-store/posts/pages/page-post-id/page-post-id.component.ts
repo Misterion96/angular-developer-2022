@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { forkJoin } from 'rxjs';
-import { tap, map, shareReplay, switchMap } from 'rxjs/operators';
+import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { PostsRoutesParams } from '../../posts-routes';
 import { PostsService } from '../../services/posts.service';
 
