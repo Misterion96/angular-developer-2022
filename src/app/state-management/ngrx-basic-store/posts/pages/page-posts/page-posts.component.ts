@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { LoadingService } from '../../../../../services/loading.service';
 import { PostInterface } from '../../interfaces/posts.interfaces';
@@ -9,18 +9,18 @@ import { PostsService } from '../../services/posts.service';
   templateUrl: './page-posts.component.html',
   styleUrls: ['./page-posts.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-      LoadingService
-  ]
 })
-export class PagePostsComponent {
-  public posts$ = this.loadingService.showLoaderUntilCompleted(this.postsService.getAllPosts$())
-  public readonly loading$ = this.loadingService.loading$
+export class PagePostsComponent implements OnInit {
+  public readonly posts$ = this.postsService.posts$
+  public readonly loading$ = this.postsService.loading$
 
   constructor(
       private readonly postsService: PostsService,
-      private readonly loadingService: LoadingService
   ) {
+  }
+
+  public ngOnInit(): void {
+    this.postsService.getAllPosts$()
   }
 
   public getImage$ = (id: PostInterface['id']) => this.postsService.getPostImage$(id);
@@ -30,9 +30,6 @@ export class PagePostsComponent {
   }
 
   public onDeletePost($event: number): void {
-    const request = this.postsService.deletePost$($event)
-    this.loadingService.showLoaderUntilCompleted(request).pipe(
-        take(1)
-    ).subscribe()
+    this.postsService.deletePost$($event)
   }
 }
