@@ -3,7 +3,7 @@
                 size="xxl"
                 [overlay]="true"
     >
-        <main class="posts__main" *ngIf="posts.length; else noPostsRef">
+        <main class="posts__main" *ngIf="posts?.length; else noPostsRef">
             <app-post *ngFor="let post of posts; trackBy: trackPost"
                       [post]="post"
                       [image]="(post.id | tuiMapper: getImage$) | async"
