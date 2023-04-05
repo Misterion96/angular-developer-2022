@@ -1,5 +1,5 @@
 {
-  "name": "article-11-other-directives",
+  "name": "angular-developer-2022",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -35,7 +35,8 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
     "lodash-es": "4.17.21",
-    "lodash": "4.17.21"
+    "lodash": "4.17.21",
+    "@ngrx/store": "14.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.3",

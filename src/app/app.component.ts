@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styles: [`:host {display:block; margin: 0 auto; padding: 16px}`]
 })
 export class AppComponent {
-  title = 'article-11-other-directives';
+  title = 'angular-developer-2022';
 }
