@@ -15,7 +15,7 @@ export class PostsApiService {
 
     getAll$(): Observable<PostInterface[]> {
         return this.http.get<PostInterface[]>(`${this.host}/posts`).pipe(
-            delay(2000),
+            delay(1000),
             map(posts => posts.filter((_, index) => index % 12 === 0)),
         )
     }
