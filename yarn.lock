@@ -1453,10 +1453,17 @@
   dependencies:
     tslib "^2.2.0"
 
-"@ngrx/store@14.0.2":
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-14.0.2.tgz#f9ab5fd68ea219aeb39276a9ba0e3e24b20e39aa"
-  integrity sha512-ogxcK7fj4zXCxCVJXzX2+jbVCfvC7ehbvbD5oWXT7GFajUIvA8FSXQzapUPAQEqFbjxgFzhjMFBApMaOcfleIQ==
+"@ngrx/effects@14.3.3":
+  version "14.3.3"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-14.3.3.tgz#5c9e43e4dc5e1d544f4604fc6a32feec2380c413"
+  integrity sha512-bP7rIHlu1KAj5Wm0TWR7Q8VlOQOBu8uiN/fDP3Lqi8FwVW6HOq9eBGcFwJGyqwVAmulsvLFB68MhpMYg2W78+w==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/store@14.3.3":
+  version "14.3.3"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-14.3.3.tgz#397d7fe54fb6c580282240c149f76f6f48ebf2a3"
+  integrity sha512-VhPDR2a5OQJfrVRah3vdJgL/F6UC8NU/X7lxKFqBW3NC+pmlIeFO/y8jLrZOKBXwG45tY9wrg15S70nEGoZtHA==
   dependencies:
     tslib "^2.0.0"
 

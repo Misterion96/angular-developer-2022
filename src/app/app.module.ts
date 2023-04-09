@@ -1,4 +1,5 @@
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
@@ -26,6 +27,7 @@ import 'zone.js';
         TuiDialogModule,
         TuiAlertModule,
         StoreModule.forRoot({}),
+        EffectsModule.forRoot(),
         RouterModule.forRoot([{
             path: AppRouting.STATE_MANAGEMENT,
             loadChildren: () => import('./state-management/state-management.module').then(m => m.StateManagementModule)
