@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { actionsLoading, selectLoading } from './+state/loading';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-developer-2022';
+  public readonly loading$ = this.store.select(selectLoading)
+
+  constructor(
+      private readonly store: Store
+  ) {
+  }
 }
