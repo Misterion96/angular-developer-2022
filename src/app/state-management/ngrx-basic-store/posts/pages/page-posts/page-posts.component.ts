@@ -12,7 +12,6 @@ import { PostsService } from '../../services/posts.service';
 })
 export class PagePostsComponent implements OnInit {
   public readonly posts$ = this.postsService.posts$
-  public readonly loading$ = this.postsService.loading$
 
   constructor(
       private readonly postsService: PostsService,

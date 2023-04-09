@@ -1,8 +1,4 @@
 <div class="tui-container tui-container_adaptive" *tuiLet="posts$ | async as posts">
-    <tui-loader [showLoader]="loading$ | async"
-                size="xxl"
-                [overlay]="true"
-    >
         <main class="posts__main" *ngIf="posts?.length; else noPostsRef">
             <app-post *ngFor="let post of posts; trackBy: trackPost"
                       [post]="post"
@@ -10,8 +6,6 @@
                       (delete)="onDeletePost($event)"
             ></app-post>
         </main>
-    </tui-loader>
-
 </div>
 
 
