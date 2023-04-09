@@ -37,7 +37,8 @@
     "lodash-es": "4.17.21",
     "lodash": "4.17.21",
     "@ngrx/store": "14.3.3",
-    "@ngrx/effects": "14.3.3"
+    "@ngrx/effects": "14.3.3",
+    "@ngrx/entity": "14.3.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.3",
