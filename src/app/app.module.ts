@@ -1,4 +1,4 @@
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
