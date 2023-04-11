@@ -1,10 +1,12 @@
 import { AsyncPipe, JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Resolve, RouterModule, Routes } from '@angular/router';
 import { TuiForModule, TuiLetModule, TuiMapperPipeModule } from '@taiga-ui/cdk';
 import { TuiButtonModule, TuiLinkModule, TuiLoaderModule } from '@taiga-ui/core';
 import { TuiIslandModule, TuiLineClampModule } from '@taiga-ui/kit';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { PostComponent } from './components/post/post.component';
 import { PagePostIdComponent } from './pages/page-post-id/page-post-id.component';
 import { PagePostsComponent } from './pages/page-posts/page-posts.component';
@@ -13,6 +15,14 @@ import { ImagesService } from './services/images.service';
 import { PostsApiService } from './services/posts-api.service';
 import { PostsService } from './services/posts.service';
 
+class DelayResolver implements Resolve<null> {
+    public resolve(): Observable<null> | Promise<null> | null {
+        return of(null).pipe(
+            delay(5000)
+        );
+    }
+
+}
 const routes: Routes = [
     {
         path: PostsRoutes.MAIN,
@@ -20,7 +30,13 @@ const routes: Routes = [
     },
     {
         path: `:${PostsRoutesParams.ID}`,
-        component: PagePostIdComponent
+        component: PagePostIdComponent,
+        resolve: {
+            delay: DelayResolver
+        },
+        data: {
+            content: 'Loading post page...'
+        }
     }
 ]
 
@@ -56,7 +72,8 @@ const COMPONENTS = [
     providers: [
         PostsService,
         PostsApiService,
-        ImagesService
+        ImagesService,
+        DelayResolver
     ]
 })
 export class PostsModule {

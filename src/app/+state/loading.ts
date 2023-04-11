@@ -1,30 +1,43 @@
-import { createActionGroup, createReducer, createSelector, emptyProps, on } from '@ngrx/store';
+import { createActionGroup, createReducer, createSelector, emptyProps, on, props } from '@ngrx/store';
 
 export interface LoadingStateInterface {
-    loading: boolean
+    loading: boolean,
+    content: string
 }
 
 export const initialLoadingState: LoadingStateInterface = {
-    loading: false
+    loading: false,
+    content: 'Loading....'
 }
 
 export const actionsLoading = createActionGroup({
     source: 'Global Loading',
     events: {
-        on: emptyProps(),
+        on: props<{content?: string}>(),
         off: emptyProps()
     }
 })
 
 const loadingReducer = createReducer(
     initialLoadingState,
-    on(actionsLoading.on, (state) => ({loading: true})),
-    on(actionsLoading.off, (state) => ({loading: false})),
+    on(actionsLoading.on, (state, action) => {
+        const {content = 'Loading...'} = action
+        return {
+            loading: true,
+            content,
+        }
+    }),
+    on(actionsLoading.off, (state) => {
+        return {
+            ...state,
+            loading: false
+        }
+    }),
 )
 
-export const selectLoading = createSelector<{loadingState: LoadingStateInterface}, LoadingStateInterface, boolean>(
+export const selectLoading = createSelector<{loadingState: LoadingStateInterface}, LoadingStateInterface, LoadingStateInterface>(
     state => state.loadingState,
-    ({loading}) => loading
+    state => state
 )
 
 export const loadingSlice = {

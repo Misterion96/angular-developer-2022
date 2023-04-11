@@ -1,8 +1,9 @@
 <tui-root>
-    <tui-loader [showLoader]="loading$ | async"
+    <tui-loader *tuiLet="loadingState$ | async as loadingState"
+                [showLoader]="loadingState.loading"
                 size="xxl"
                 [overlay]="true"
-                textContent="Loading..."
+                [textContent]="loadingState.content"
     >
         <router-outlet></router-outlet>
     </tui-loader>

@@ -10,7 +10,7 @@ import { selectLoading } from './+state/loading';
 })
 export class AppComponent {
   title = 'angular-developer-2022';
-  public readonly loading$ = this.store.select(selectLoading).pipe(
+  public readonly loadingState$ = this.store.select(selectLoading).pipe(
       delay(0)
   )
 

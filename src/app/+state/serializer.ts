@@ -6,7 +6,6 @@ import { createSelector, MemoizedSelector } from '@ngrx/store';
 export interface AppRouterStateUrl {
     url: string;
     params: Params;
-    queryParams: Params;
     data: Data;
 }
 
@@ -21,11 +20,10 @@ export class AppSerializer
 
         const {
             url,
-            root: { queryParams },
         } = state;
         const { params, data } = currentRoute;
 
-        return { url, params, queryParams, data };
+        return { url, params, data };
     }
 }
 
@@ -34,11 +32,6 @@ const selectRouteState = (state: {router: RouterReducerState<AppRouterStateUrl>}
 const routerState = createSelector(
     selectRouteState,
     state => state.state
-)
-
-export const selectQueryParams = createSelector(
-    routerState,
-    state => state.queryParams
 )
 
 export const selectRouteParams = createSelector(
