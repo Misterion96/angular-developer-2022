@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import {
     actionsPosts,
     PostsState,
-    selectLoading,
     selectPosts
 } from '../+state';
 import { PostCommentsInterface, PostInterface } from '../interfaces/posts.interfaces';
@@ -15,10 +14,6 @@ import { PostsApiService } from './posts-api.service';
 export class PostsService {
     public readonly posts$ = this.store.pipe(
         select(selectPosts),
-    )
-
-    public readonly loading$ = this.store.pipe(
-        select(selectLoading)
     )
 
     constructor(
@@ -34,9 +29,6 @@ export class PostsService {
 
     public getAllPosts$(): void {
         this.store.dispatch(actionsPosts.load())
-        this.apiService.getAll$().subscribe(r => {
-            this.store.dispatch(actionsPosts.loaded({payload: r}))
-        })
     }
 
     public getPostById$(id: PostInterface['id']): Observable<PostInterface> {
@@ -48,9 +40,6 @@ export class PostsService {
     }
 
     public deletePost$(id: PostInterface['id']): void {
-        this.store.dispatch(actionsPosts.postdelete())
-        this.apiService.delete$(id).subscribe(() => {
-            this.store.dispatch(actionsPosts.postdeleted({payload: id}))
-        })
+        this.store.dispatch(actionsPosts.postdelete({payload: id}))
     }
 }

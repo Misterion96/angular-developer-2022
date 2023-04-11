@@ -1,3 +1,10 @@
 <tui-root>
-    <router-outlet></router-outlet>
+    <tui-loader *tuiLet="loadingState$ | async as loadingState"
+                [showLoader]="loadingState.loading"
+                size="xxl"
+                [overlay]="true"
+                [textContent]="loadingState.content"
+    >
+        <router-outlet></router-outlet>
+    </tui-loader>
 </tui-root>

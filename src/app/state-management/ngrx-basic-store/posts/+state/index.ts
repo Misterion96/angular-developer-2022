@@ -1,3 +1,4 @@
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import {
     createActionGroup, createFeature,
     createFeatureSelector,
@@ -9,13 +10,18 @@ import {
 import { PostInterface } from '../interfaces/posts.interfaces';
 
 export interface PostsState {
-    posts: PostInterface[],
-    loading: boolean
+    posts: EntityState<PostInterface>,
 }
 
+const adapter = createEntityAdapter<PostInterface>({
+    selectId: post => post.id,
+    sortComparer: false
+})
+
+const initialPostEntityState = adapter.getInitialState()
+
 const initialPostsState: PostsState = {
-    posts: [],
-    loading: false
+    posts: initialPostEntityState,
 }
 
 export const actionsPosts = createActionGroup(
@@ -24,8 +30,7 @@ export const actionsPosts = createActionGroup(
         events: {
             load: emptyProps(),
             loaded: props<{payload: PostInterface[]}>(),
-            loadedError: props<{payload: unknown}>(),
-            postDelete: emptyProps(),
+            postDelete: props<{payload: PostInterface['id']}>(),
             postDeleted: props<{payload: PostInterface['id']}>()
         }
     }
@@ -33,34 +38,14 @@ export const actionsPosts = createActionGroup(
 
 const postsReducer = createReducer(
     initialPostsState,
-    on(actionsPosts.load, (state) => {
-        return {
-            ...state,
-            loading: true
-        }
-    }),
     on(actionsPosts.loaded, (state, action) => {
         return {
-            posts: action.payload,
-            loading: false
-        }
-    }),
-    on(actionsPosts.loadederror, (state) => {
-        return {
-            ...state,
-            loading: false
-        }
-    }),
-    on(actionsPosts.postdelete, (state) => {
-        return {
-            ...state,
-            loading: true
+            posts: adapter.setAll(action.payload, state.posts),
         }
     }),
     on(actionsPosts.postdeleted, (state, action) => {
         return {
-            posts: state.posts.filter(p => p.id !== action.payload),
-            loading: false
+            posts: adapter.removeOne(action.payload, state.posts)
         }
     })
 );
@@ -73,12 +58,13 @@ export const postsFeature = createFeature({
 })
 const selectPostsFeature = createFeatureSelector<PostsState>(FEATURE_POSTS)
 
-export const selectPosts = createSelector(
+const selectPostsEntity = createSelector(
     selectPostsFeature,
     (state) => state.posts
 )
 
-export const selectLoading = createSelector(
-    selectPostsFeature,
-    (state) => state.loading
+const {selectAll} = adapter.getSelectors()
+export const selectPosts = createSelector(
+    selectPostsEntity,
+    selectAll
 )
