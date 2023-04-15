@@ -2,48 +2,35 @@ import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TuiAlertService } from '@taiga-ui/core';
 import { exhaustMap, map, of, switchMap } from 'rxjs';
-import { catchError, delay } from 'rxjs/operators';
-import { actionsLoading } from '../../../../+state/loading';
-import { PostsApiService } from '../services/posts-api.service';
-import { actionsPosts } from './index';
+import { catchError, delay, tap } from 'rxjs/operators';
+import { LoaderService } from '../../../../../core/loader/loader.service';
+import { PostsApiService } from '../../services/posts-api.service';
+import { actionsPosts } from './posts.actions';
 
 @Injectable()
 export class PostsEffects {
     constructor(
         private readonly actions$: Actions,
-        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
+        @Inject(TuiAlertService)
+        private readonly alerts: TuiAlertService,
         private readonly apiPosts: PostsApiService,
+        private readonly loader: LoaderService,
     ) {
     }
 
     public loadingOn$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(actionsPosts.load),
-            map(() => actionsLoading.on({})),
+            ofType(actionsPosts.load, actionsPosts.postdelete),
+            tap(() => this.loader.on()),
         )
-    })
+    }, {dispatch: false})
 
     public loadingOff$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(actionsPosts.loaded),
-            map(() => actionsLoading.off())
+            ofType(actionsPosts.loaded, actionsPosts.postdeleted),
+            tap(() => this.loader.off())
         )
-    })
-
-    public loadingDeleteOn$ = createEffect(() => {
-        return this.actions$.pipe(
-            ofType(actionsPosts.postdelete),
-            map(() => actionsLoading.on({}))
-        )
-    })
-
-
-    public loadingDeleteOff$ = createEffect(() => {
-        return this.actions$.pipe(
-            ofType(actionsPosts.postdeleted),
-            map(() => actionsLoading.off())
-        )
-    })
+    }, {dispatch: false})
 
     public postDeleted$ = createEffect(() => {
         return this.actions$.pipe(

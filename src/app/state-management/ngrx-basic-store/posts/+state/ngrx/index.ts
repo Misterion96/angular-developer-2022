@@ -1,0 +1,6 @@
+export { PostsState } from './posts.state'
+export { actionsPosts } from './posts.actions'
+export { postsFeature } from './posts.feature'
+export { selectPosts } from './posts.selectors'
+export { PostsEffects } from './posts.effects'
+export { PostsNgrxModule } from './posts-ngrx.module'

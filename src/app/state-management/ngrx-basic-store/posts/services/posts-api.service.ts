@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, switchMap, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators'
 import { PostCommentsInterface, PostInterface } from '../interfaces/posts.interfaces';
 
@@ -15,8 +15,9 @@ export class PostsApiService {
 
     getAll$(): Observable<PostInterface[]> {
         return this.http.get<PostInterface[]>(`${this.host}/posts`).pipe(
-            delay(1999),
+            // delay(1999),
             map(posts => posts.filter((_, index) => index % 12 === 0)),
+            // switchMap(() => throwError(() => new Error('Custom error')))
         )
     }
 
@@ -29,6 +30,8 @@ export class PostsApiService {
     }
 
     delete$(id: PostInterface['id']): Observable<void> {
-        return this.http.delete<void>(`${this.host}/posts/${id}`)
+        return this.http.delete<void>(`${this.host}/posts/${id}`).pipe(
+            // switchMap(() => throwError(() => new Error('Custom error')))
+        )
     }
 }

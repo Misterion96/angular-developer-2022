@@ -18,7 +18,7 @@ import { PostsService } from './services/posts.service';
 class DelayResolver implements Resolve<null> {
     public resolve(): Observable<null> | Promise<null> | null {
         return of(null).pipe(
-            delay(5000)
+            delay(3000)
         );
     }
 

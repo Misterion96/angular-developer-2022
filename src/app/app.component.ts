@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { delay } from 'rxjs/operators';
-import { selectLoading } from './+state/loading';
+import { RouterListenerService } from './core/router/router-listener.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +8,10 @@ import { selectLoading } from './+state/loading';
 })
 export class AppComponent {
   title = 'angular-developer-2022';
-  public readonly loadingState$ = this.store.select(selectLoading).pipe(
-      delay(0)
-  )
 
   constructor(
-      private readonly store: Store
+      private readonly routerListenerService: RouterListenerService,
   ) {
+    this.routerListenerService.init()
   }
 }

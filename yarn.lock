@@ -1336,6 +1336,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.1.1.tgz#c9c61d9fe5ca5ac664e1153bb0aa0eba1c6d6308"
   integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
 
+"@datorama/akita@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@datorama/akita/-/akita-8.0.1.tgz#b37df94941e84f27ceb8ac875579c3a10c4bc536"
+  integrity sha512-0VnPWd+Sy3ColhzjDSBNcEnzAQtbezk6bYmJHvPaLMK5Ysl90KcNls2bE4sj5vaLeGLjhMtqtfp/RgrigPXDxA==
+
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
@@ -1492,6 +1497,13 @@
   version "14.2.10"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-14.2.10.tgz#d33ff1147d01bd1f5d936a3d1744c81a28e2ca6a"
   integrity sha512-sLHapZLVub6mEz5b19tf1VfIV1w3tYfg7FNPLeni79aldxu1FbP1v2WmiFAnMzrswqyK0bhTtxrl+Z/CLKqyoQ==
+
+"@ngxs/store@^3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-3.8.0.tgz#2bf76d326c5d91763cf747ca8be152254ea3543c"
+  integrity sha512-ZIVM2ftudeB3VSjULJjb31RS3WKYVgs/67IHdDjukn1S0X8ZRk07QNH6cUCfUB5h345sMLCwliwVuqh+IXbYSw==
+  dependencies:
+    tslib "^2.2.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

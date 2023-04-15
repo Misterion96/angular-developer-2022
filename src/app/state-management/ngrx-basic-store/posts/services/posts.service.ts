@@ -1,25 +1,25 @@
-import { Injectable } from '@angular/core';
-import { ActionsSubject, select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import {
-    actionsPosts,
-    PostsState,
-    selectPosts
-} from '../+state';
+import { Inject, Injectable } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { TuiAlertService, TuiNotification } from '@taiga-ui/core';
+import { Observable, switchMap } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { PostsAkitaFacade } from '../+state/akita/posts-akita.facade';
+import { PostsCustomStoreFacade } from '../+state/custom-store';
+import { NgxsPostsState } from '../+state/ngxs';
+
 import { PostCommentsInterface, PostInterface } from '../interfaces/posts.interfaces';
 import { ImagesService } from './images.service';
 import { PostsApiService } from './posts-api.service';
 
 @Injectable()
 export class PostsService {
-    public readonly posts$ = this.store.pipe(
-        select(selectPosts),
-    )
+    @Select(NgxsPostsState.posts)
+    public readonly posts$
 
     constructor(
         private readonly imageService: ImagesService,
         private readonly apiService: PostsApiService,
-        private readonly store: Store<{posts: PostsState}>,
+        private readonly postsCustomStore: PostsCustomStoreFacade
     ) {
     }
 
@@ -27,8 +27,12 @@ export class PostsService {
         return this.imageService.getImage(id.toString());
     }
 
+    public deletePost$(id: PostInterface['id']): void {
+        this.postsCustomStore.deletePost(id);
+    }
+
     public getAllPosts$(): void {
-        this.store.dispatch(actionsPosts.load())
+        this.postsCustomStore.getAll();
     }
 
     public getPostById$(id: PostInterface['id']): Observable<PostInterface> {
@@ -39,7 +43,4 @@ export class PostsService {
         return this.apiService.getCommentsById$(id)
     }
 
-    public deletePost$(id: PostInterface['id']): void {
-        this.store.dispatch(actionsPosts.postdelete({payload: id}))
-    }
 }

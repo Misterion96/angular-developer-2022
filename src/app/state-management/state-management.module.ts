@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { PostsModule } from './ngrx-basic-store/posts';
-import { postsFeature } from './ngrx-basic-store/posts/+state';
-import { PostsEffects } from './ngrx-basic-store/posts/+state/posts-effects';
+import { PostsAkitaModule } from './ngrx-basic-store/posts/+state/akita/posts-akita.module';
+import { CustomStoreModule } from './ngrx-basic-store/posts/+state/custom-store/custom-store.module';
+import { PostsNgxsModule } from './ngrx-basic-store/posts/+state/ngxs/posts-ngxs.module';
 
 @NgModule({
     imports: [
         PostsModule,
-        StoreModule.forFeature(postsFeature),
-        EffectsModule.forFeature([PostsEffects])
+        CustomStoreModule
+        // PostsAkitaModule
+        // PostsNgxsModule,
     ]
 })
 export class StateManagementModule {}
